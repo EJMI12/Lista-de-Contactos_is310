@@ -84,13 +84,13 @@ public class Lista_Contactos {
          * @param lista
          */
 
-        Persona p1 = new Persona("Daniel", "Perez", "819-555-5555", "Santo Domingo", "Email");
-        Persona p2 = new Persona("Carlos", "Perez", "889-555-5555", "Santo Domingo", "Email");
-        Persona p3 = new Persona("Andres", "Perez", "829-555-5555", "Santo Domingo", "Email");
-        Persona p4 = new Persona("Bryan", "Perez", "809-555-5555", "Santo Domingo", "Email");
-        Persona p5 = new Persona("Eduardo", "Perez", "899-555-5555", "Santo Domingo", "Email");
-        Persona p6 = new Persona("Fernando", "Perez", "849-555-5555", "Santo Domingo", "Email");
-        Persona p7 = new Persona("Daniel", "Almendarez", "869-555-5555", "Santo Domingo", "Email");
+        Persona p1 = new Persona("Daniel", "Perez", "819-555-5555", "Santo Domingo", "Email","Familia",true);
+        Persona p2 = new Persona("Carlos", "Perez", "889-555-5555", "Santo Domingo", "Email","Familia",false);
+        Persona p3 = new Persona("Andres", "Perez", "829-555-5555", "Santo Domingo", "Email","Colega",true);
+        Persona p4 = new Persona("Bryan", "Perez", "809-555-5555", "Santo Domingo", "Email","Colega",false);
+        Persona p5 = new Persona("Eduardo", "Perez", "899-555-5555", "Santo Domingo", "Email","Colega",false);
+        Persona p6 = new Persona("Fernando", "Perez", "849-555-5555", "Santo Domingo", "Email","Familia",true);
+        Persona p7 = new Persona("Daniel", "Almendarez", "869-555-5555", "Santo Domingo", "Email","Familia",false);
 
 
         contactos.add(p1);
@@ -103,8 +103,6 @@ public class Lista_Contactos {
 
 
         Ordenar(contactos);
-        //implementando funcion de imprimir indice de letra y contactos quitando formato de linkedlist
-        Imprimir(contactos);
 
 //do while del menu
         int opcion = 0;
@@ -174,7 +172,15 @@ public class Lista_Contactos {
         String direccion = sc.nextLine();
         System.out.println("Ingrese el email del contacto");
         String email = sc.nextLine();
-        Persona p = new Persona(nombre,apellido,telefono,direccion,email);
+        System.out.println("Ingrese el tipo de contacto"+" "+"(Familia, Colega, Amigo)");
+        String tipo = sc.nextLine();
+        Boolean favorito = false;
+        System.out.println("Desea agregarlo a favoritos? (si/no)");
+            if (sc.nextLine().equalsIgnoreCase("si")) {
+                    favorito = true;
+                }else if (sc.nextLine().equalsIgnoreCase("no")) {
+                    favorito = false;}
+        Persona p = new Persona(nombre,apellido,telefono,direccion,email,tipo,favorito);
         lista.add(p);
         Ordenar(lista);
     }
